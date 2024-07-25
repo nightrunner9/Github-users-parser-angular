@@ -1,0 +1,29 @@
+<div class="overlay-layout">
+  <div class="overlay">
+    <img [src]="userInfo.avatar_url" />
+    <div>
+      <div class="field">
+        <h3> Followers: </h3>
+        <div class="list">
+          <a
+          *ngFor="let follower_url of userInfo.followers"
+          [href]="follower_url"
+          >
+          </a>
+        </div>
+      </div>
+      <!-- <div class="field">
+        <h3> Repositories: {{ userInfo.followers }}</h3>
+        <div class="list">
+          <p></p>
+        </div>
+      </div>
+      <div class="field">
+        <h3> Following: {{ userInfo.followers }}</h3>
+        <div class="list">
+          <p></p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

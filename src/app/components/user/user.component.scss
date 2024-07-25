@@ -1,0 +1,15 @@
+.user-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 100px;
+    height: 100%;
+  }
+
+  p {
+    margin: 0;
+    padding: 8px 0px;
+  }
+}

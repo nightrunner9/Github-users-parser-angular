@@ -1,0 +1,31 @@
+.users_list {
+  height: 100%;
+  max-width: 80%;
+  padding: 10em 15em;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.search_container {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  padding: 20px 0px;
+
+  input {
+    width: 670px;
+    padding: 12px 8px;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: scroll;
+  max-height: 300px;
+  gap: 16px;
+}
