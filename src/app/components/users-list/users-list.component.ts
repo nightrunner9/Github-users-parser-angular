@@ -1,19 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { debounceTime, filter, fromEvent } from 'rxjs';
 import { IUsers } from 'src/app/models/users';
 import { UsersListService } from 'src/app/services/users-list.service';
-
-const INITIAL_FILTERS = {
-  q: '',
-  since: 0,
-  per_page: 20,
-};
-
-interface IFilters {
-  q?: string,
-  since?: number,
-  per_page?: number,
-};
 
 @Component({
   selector: 'app-users-list',
@@ -22,32 +10,25 @@ interface IFilters {
 })
 
 export class UsersListComponent implements OnInit {
-  // @ViewChild('filterInput') inp: ElementRef | undefined;
+  @ViewChild('filterInput') searchInput: ElementRef | undefined;
 
   constructor(
     private usersService: UsersListService,
   ) {}
 
   users: IUsers[] = [];
-  filters: IFilters = INITIAL_FILTERS;
 
   ngOnInit(): void {
-    this.loadUsers()
 
-    // console.log(this.inp)
-    // fromEvent(filterInput, 'input')
   }
 
-  // public ngAfterViewInit(): void {
-  //   fromEvent(this.inp?.nativeElement, 'input').subscribe(() => {
-  //     return true;
-  //   })
-  // }
-
-  private loadUsers(): void {
-    this.usersService.getUsers().subscribe((data) => {
-      this.users = data;
-    });
+  ngAfterViewInit(): void {
+    fromEvent(this.searchInput?.nativeElement, 'input').pipe(
+      debounceTime(500),
+      filter(() => this.searchInput?.nativeElement.value.length),
+    ).subscribe(() => {
+      this.searchUsers(this.searchInput?.nativeElement.value);
+    })
   }
 
   private searchUsers(search: string): void {
@@ -55,11 +36,4 @@ export class UsersListComponent implements OnInit {
       this.users = data.items;
     })
   }
-
-  onChangeFilter(filter: IFilters): void {
-    this.filters = {...this.filters, ...filter};
-
-    ('q' in filter && filter.q?.length) ? this.searchUsers(filter.q) : this.loadUsers()
-  }
-
 }

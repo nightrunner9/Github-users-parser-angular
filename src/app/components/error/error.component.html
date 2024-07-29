@@ -1,0 +1,8 @@
+<ng-container *ngIf="(error$ | async) as err">
+  <div
+    class="error_wrapper">
+    <h2> {{ err.status }}. {{ err.message}} </h2>
+  </div>
+</ng-container>
+
+

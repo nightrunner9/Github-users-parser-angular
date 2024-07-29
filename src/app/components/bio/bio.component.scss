@@ -1,0 +1,62 @@
+.bio_wrapper {
+  margin: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  div {
+    width: 300px;
+  }
+
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  :last-child {
+    div > a {
+      width: 100%;
+    }
+  }
+
+  &:not(:last-child) {
+    a {
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+a {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+img {
+  width: 20%;
+  height: 100%;
+}

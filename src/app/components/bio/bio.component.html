@@ -1,0 +1,45 @@
+<div class="bio_wrapper">
+  <app-error></app-error>
+  <img [src]="avatar$ | async" />
+  <div class="fields">
+    <div>
+      <h3>
+        Followers:
+      </h3>
+      <div class="list">
+        <a
+        *ngFor="let followers of followers$ | async"
+        [href]="followers.url"
+        >
+          <img [src]="followers.avatar" />
+        </a>
+      </div>
+    </div>
+    <div>
+      <h3>
+        Followings:
+      </h3>
+      <div class="list">
+        <a
+        *ngFor="let following of following$ | async"
+        [href]="following.url"
+        >
+          <img [src]="following.avatar" />
+        </a>
+      </div>
+    </div>
+    <div>
+      <h3>
+        Repositories:
+      </h3>
+      <div class="list">
+        <a
+        *ngFor="let repo of repos$ | async"
+        [href]="repo.url"
+        >
+          {{ repo.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

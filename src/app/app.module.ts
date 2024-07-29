@@ -8,6 +8,9 @@ import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OverlayComponent } from './components/overlay/overlay.component';
+import { BioComponent } from './components/bio/bio.component';
+import { ErrorComponent } from './components/error/error.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,8 +18,11 @@ import { OverlayComponent } from './components/overlay/overlay.component';
     UsersListComponent,
     UserComponent,
     OverlayComponent,
+    BioComponent,
+    ErrorComponent,
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,

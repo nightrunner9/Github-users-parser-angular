@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersListService } from 'src/app/services/users-list.service';
-
-interface IInfo {
-  avatar_url: string,
-  followers: string[],
-  following: string[],
-  public_repos: string[],
-}
+import { IInfo } from './overlay.types';
+import { IUserInformation, IUserRepos, IUsers } from 'src/app/models/users';
 
 @Component({
   selector: 'app-overlay',
@@ -33,7 +28,7 @@ export class OverlayComponent implements OnInit {
   }
 
   getInfo(): void {
-    this.usersService.getUserInfo(this.paramId).subscribe((data) => {
+    this.usersService.getUserInfo(this.paramId).subscribe((data: IUserInformation) => {
       this.userInfo = {
         ...this.userInfo,
         avatar_url: data.avatar_url,
@@ -42,7 +37,7 @@ export class OverlayComponent implements OnInit {
   }
 
   getFollowers(): void {
-    this.usersService.getUserInfo(this.paramId, 'followers').subscribe((data) => {
+    this.usersService.getUserInfo(this.paramId, 'followers').subscribe((data: IUsers[]) => {
       this.userInfo = {
         ...this.userInfo,
         followers: data.map(({ html_url }) => html_url)
@@ -51,7 +46,7 @@ export class OverlayComponent implements OnInit {
   }
 
   getFollowings(): void {
-    this.usersService.getUserInfo(this.paramId, 'following').subscribe((data) => {
+    this.usersService.getUserInfo(this.paramId, 'following').subscribe((data: IUsers[]) => {
       this.userInfo = {
         ...this.userInfo,
         following: data.map(({ html_url }) => html_url)
@@ -60,7 +55,7 @@ export class OverlayComponent implements OnInit {
   }
 
   getRepos(): void {
-    this.usersService.getUserInfo(this.paramId, 'repos').subscribe((data) => {
+    this.usersService.getUserInfo(this.paramId, 'repos').subscribe((data: IUserRepos[]) => {
       this.userInfo = {
         ...this.userInfo,
         public_repos: data.map(({ git_url }) => git_url)

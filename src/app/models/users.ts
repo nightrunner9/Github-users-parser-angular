@@ -151,4 +151,4 @@ export interface IUserRepos {
   default_branch: string
 }
 
-export type UserApiType = IUserRepos[] & IUserInformation & IUsers[]
+export type UserApiType = IUserInformation & IUsers[] & IUserRepos[]

@@ -2,19 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
-
-const childRoutes: Routes = [
-  {
-    path: ':id',
-    component: OverlayComponent,
-  }
-]
+import { BioComponent } from './components/bio/bio.component';
 
 const routes: Routes = [
   {
     path: '',
     component: UsersListComponent,
-    children: childRoutes,
+  },
+  {
+    path: ':id',
+    component: BioComponent,
   },
 ];
 

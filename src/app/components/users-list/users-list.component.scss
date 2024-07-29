@@ -25,7 +25,6 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  overflow: scroll;
-  max-height: 300px;
+  overflow: auto;
   gap: 16px;
 }
