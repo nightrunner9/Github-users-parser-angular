@@ -1,5 +1,5 @@
+<app-error [error]="error"></app-error>
 <div class="bio_wrapper">
-  <app-error></app-error>
   <img [src]="avatar$ | async" />
   <div class="fields">
     <div>
@@ -11,7 +11,7 @@
         *ngFor="let followers of followers$ | async"
         [href]="followers.url"
         >
-          <img [src]="followers.avatar" />
+          <img [src]="followers.img" />
         </a>
       </div>
     </div>
@@ -24,7 +24,7 @@
         *ngFor="let following of following$ | async"
         [href]="following.url"
         >
-          <img [src]="following.avatar" />
+          <img [src]="following.img" />
         </a>
       </div>
     </div>

@@ -11,26 +11,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
   selector: 'app-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ErrorComponent implements OnInit {
-  error$ = new BehaviorSubject<IError | null>(null);
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor() { }
 
-  // @Input() handleError!: IError;
+  @Input() error: IErrorType;
 
   ngOnInit(): void {
   }
-
-  handleError({ status, message }: HttpErrorResponse) {
-    this.error$.next({
-      status,
-      message,
-    })
-    console.log(this.error$)
-    this.changeDetectorRef.detectChanges();
-  }
-
-
 }
